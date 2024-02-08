@@ -22,9 +22,9 @@ export default async function Product({
 }) {
   const { id } = params;
 
-  const product = (await fetch(`https://fakestoreapi.com/products/${id}`, {
-    cache: 'no-cache',
-  }).then((res) => res.json())) as Product;
+  const product = (await fetch(`https://fakestoreapi.com/products/${id}`).then(
+    (res) => res.json(),
+  )) as Product;
 
   return (
     <Suspense fallback={<Loading />}>
