@@ -9,17 +9,14 @@ interface HomeProps {
 export const HomeContainer = ({ data }: HomeProps) => {
   return (
     <>
-      <section>
-        <h1 className="pt-[40px]">Fake Shop</h1>
-      </section>
       <section className="w-[100%] flex flex-wrap items-center justify-center gap-y-[10px]">
         {data.map((el) => (
           <div
             key={el.id}
             className="group w-[300px] h-[400px] p-[25px] border-b border-[1px_solid]"
           >
-            <div className="cursor-pointer flex flex-col items-center w-full h-full p-[25px] hover:shadow-lg">
-              <Link href={`/product/${el.id}`}>
+            <Link href={`/product/${el.id}`}>
+              <div className="cursor-pointer flex flex-col items-center w-full h-full p-[25px] hover:shadow-lg">
                 <div className="w-[250px] h-[250px]">
                   <ImageComponent src={el.image} alt="product img" />
                 </div>
@@ -27,8 +24,8 @@ export const HomeContainer = ({ data }: HomeProps) => {
                   {el.title}
                 </p>
                 <p className="w-full text-[#cb1400] text-[20px]">${el.price}</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         ))}
       </section>

@@ -41,9 +41,9 @@ export const ImageComponent = (props: ImageComponentProps) => {
         <Image
           {...props}
           fill
-          objectFit="contain"
           priority
           sizes="100"
+          style={{ objectFit: 'contain' }}
           onLoad={() => {
             setIsLoading(false);
           }}
