@@ -20,7 +20,9 @@ export const HomeContainer = ({ data }: HomeProps) => {
           >
             <div className="cursor-pointer flex flex-col items-center w-full h-full p-[25px] hover:shadow-lg">
               <Link href={`/product/${el.id}`}>
-                <ImageComponent src={el.image} alt="product img" />
+                <div className="w-[250px] h-[250px]">
+                  <ImageComponent src={el.image} alt="product img" />
+                </div>
                 <p className="w-full text-[12px] pt-[10px] pb-[5px] group-hover:underline">
                   {el.title}
                 </p>

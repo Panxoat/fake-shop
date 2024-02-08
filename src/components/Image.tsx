@@ -9,6 +9,8 @@ import { OnLoadingComplete } from 'next/dist/shared/lib/get-img-props';
 interface ImageComponentProps {
   src: string;
   alt: string;
+  containerW?: number;
+  containerH?: number;
   width?: number;
   height?: number;
   fill?: boolean;
@@ -29,15 +31,17 @@ export const ImageComponent = (props: ImageComponentProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <>
+    <div className="w-full h-full">
       <div
-        className={clsx('relative w-[200px] h-[200px]', {
+        style={{ width: props.containerW, height: props.containerH }}
+        className={clsx('relative w-full h-full', {
           'animate-pulse': !!isLoading,
         })}
       >
         <Image
           {...props}
           fill
+          objectFit="contain"
           priority
           sizes="100"
           onLoad={() => {
@@ -45,6 +49,6 @@ export const ImageComponent = (props: ImageComponentProps) => {
           }}
         />
       </div>
-    </>
+    </div>
   );
 };

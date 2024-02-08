@@ -7,11 +7,23 @@ interface ProductContainerProps {
 
 export const ProductContainer = ({ data }: ProductContainerProps) => {
   return (
-    <div>
-      <p>{data.title}</p>
-      <p>{data.description}</p>
-      <p>{data.price}</p>
-      <ImageComponent src={data.image} alt="product detail img" />
-    </div>
+    <main className="flex items-start gap-x-[20px]">
+      <section className="border">
+        <ImageComponent
+          containerW={500}
+          containerH={500}
+          src={data.image}
+          alt="product detail img"
+        />
+      </section>
+      <section>
+        <h1 className="text-[40px] font-bold">{data.title}</h1>
+        <p>{data.description}</p>
+        <hr className="my-[10px]" />
+        <p className="text-[20px] text-[#cb1400] font-semibold">
+          ${data.price}
+        </p>
+      </section>
+    </main>
   );
 };
