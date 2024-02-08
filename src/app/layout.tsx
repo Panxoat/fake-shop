@@ -15,9 +15,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = (await fetch(
+  const categories = await fetch(
     'https://fakestoreapi.com/products/categories',
-  ).then((res) => res.json())) as Category;
+  ).then((res) => res.json());
 
   return (
     <html lang="en">

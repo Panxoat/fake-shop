@@ -10,8 +10,8 @@ export const ProductContainer = ({ data }: ProductContainerProps) => {
     <main className="flex items-start gap-x-[20px]">
       <section className="border">
         <ImageComponent
-          containerW={500}
-          containerH={500}
+          containerw={500}
+          containerh={500}
           src={data.image}
           alt="product detail img"
         />
