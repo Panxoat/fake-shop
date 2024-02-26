@@ -1,4 +1,5 @@
 import { HomeContainer } from '@/containers/page';
+import { Suspense } from 'react';
 
 export async function generateStaticParams() {
   const categories = (await fetch(
@@ -25,7 +26,11 @@ export default async function ProductByCategory({
 
   return (
     <main className="flex flex-col items-center gap-y-[30px]">
-      <HomeContainer data={data} />
+      <Suspense>
+        <HomeContainer data={data} />
+      </Suspense>
     </main>
   );
 }
+
+export const runtime = 'edge';

@@ -15,7 +15,9 @@ export default async function Home({
 
   return (
     <main className="flex flex-col items-center gap-y-[30px]">
-      <HomeContainer data={data} />
+      <Suspense>
+        <HomeContainer data={data} />
+      </Suspense>
     </main>
   );
 }
