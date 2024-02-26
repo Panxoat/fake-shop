@@ -33,4 +33,4 @@ export default async function ProductByCategory({
   );
 }
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
