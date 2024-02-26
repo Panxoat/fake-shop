@@ -1,14 +1,67 @@
+'use client';
+
 import { ImageComponent } from '@/components/Image';
 import { Product } from '@/types/product';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface HomeProps {
   data: Product[];
 }
 
+const SORT_OPTIONS = [
+  {
+    value: 'default',
+    name: 'Default',
+  },
+  {
+    value: 'asc',
+    name: 'Price: High - High',
+  },
+  {
+    value: 'desc',
+    name: 'Price: High - Low',
+  },
+];
+
 export const HomeContainer = ({ data }: HomeProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  function updateSorting(sortOrder: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('sort', sortOrder);
+
+    router.push(`/?sort=${sortOrder}`);
+  }
+
   return (
     <>
+      <section className="w-full px-[40px] pt-[20px]">
+        <div className="flex gap-x-[20px] justify-start bg-gray-100 py-[10px] px-[10px]">
+          {SORT_OPTIONS.map((option) => (
+            <label
+              key={option.value}
+              htmlFor={option.value}
+              className="flex items-center gap-x-[5px]"
+            >
+              <input
+                id={option.value}
+                value={option.value}
+                type="radio"
+                name="sort"
+                checked={
+                  option.value === (searchParams.get('sort') || 'default')
+                }
+                onChange={() => {
+                  updateSorting(option.value);
+                }}
+              />
+              <span className="text-[13px]">{option.name}</span>
+            </label>
+          ))}
+        </div>
+      </section>
       <section className="w-[100%] flex flex-wrap items-center justify-center gap-y-[10px]">
         {data.map((el) => (
           <div
